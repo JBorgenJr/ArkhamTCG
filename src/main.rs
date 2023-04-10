@@ -31,7 +31,7 @@ async fn fetch_cards() {
             let json_string = response.text().await.unwrap();
 
             // Write JSON to file
-            let mut file = File::create("cards.json").unwrap();
+            let mut file = File::create("src/assets/cards.json").unwrap();
             file.write_all(json_string.as_bytes()).unwrap();
         }
         reqwest::StatusCode::UNAUTHORIZED => {
