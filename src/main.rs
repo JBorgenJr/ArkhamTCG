@@ -1,4 +1,4 @@
-//use bevy::prelude::*;
+use bevy::prelude::*;
 use serde_json::Value;
 use std::fs::File;
 use std::io::{Read, Write};
@@ -16,12 +16,15 @@ async fn main() {
         fetch_cards().await;
     }
 
-    //App::new().run();
+    App::new().add_system(init_system).run();
+}
+
+fn init_system() {
     get_card("01000");
 }
 
 fn get_card(code: &str) {
-    // Get
+    // Get json file with card data
     let mut file = File::open("src/assets/cards.json").unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
@@ -37,7 +40,7 @@ fn get_card(code: &str) {
         .find(|card| card["code"] == code)
     {
         // Print card value
-        println!("Card Value: {}", card_value);
+        println!("{}", serde_json::to_string_pretty(&card_value).unwrap());
     } else {
         println!("Card with code {} not found", code);
     }
