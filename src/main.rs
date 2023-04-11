@@ -16,22 +16,13 @@ async fn main() {
         fetch_cards().await;
     }
 
-    App::new().add_system(init_system).run();
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_plugin(InitGame)
+        .run();
 }
 
-fn init_system() {
-    get_card("01000");
-}
-
-fn get_card(code: &str) {
-    // Get json file with card data
-    let mut file = File::open("src/assets/cards.json").unwrap();
-    let mut contents = String::new();
-    file.read_to_string(&mut contents).unwrap();
-
-    // Parse JSON
-    let json_value: Value = serde_json::from_str(&contents).unwrap();
-
+fn get_card(code: &str, json_value: Value) {
     // Search for card via card code
     if let Some(card_value) = json_value
         .as_array()
@@ -69,4 +60,31 @@ async fn fetch_cards() {
             panic!("Unable to fetch cards, something went wrong");
         }
     };
+}
+
+#[derive(Component)]
+struct Card;
+#[derive(Component)]
+struct Code(String);
+
+fn create_card(mut commands: Commands) {
+    commands.spawn((Card, Code("01001".to_string())));
+    commands.spawn((Card, Code("01002".to_string())));
+}
+
+pub struct InitGame;
+impl Plugin for InitGame {
+    fn build(&self, app: &mut App) {
+        app.add_startup_system(load_config);
+    }
+}
+
+fn load_config() {
+    let mut file = File::open("src/assets/cards.json").unwrap();
+
+    let mut contents = String::new();
+    file.read_to_string(&mut contents).unwrap();
+
+    // Parse JSON
+    let json_value: Value = serde_json::from_str(&contents).unwrap();
 }
