@@ -22,9 +22,7 @@ async fn main() {
         .run();
 }
 
-fn get_card(code: &str, json_value: Value) {
-    // TODO Adjust this to have it return the card value
-
+fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
     // Search for card via card code
     if let Some(card_value) = json_value
         .as_array()
@@ -32,10 +30,10 @@ fn get_card(code: &str, json_value: Value) {
         .iter()
         .find(|card| card["code"] == code)
     {
-        // Print card value
-        println!("{}", serde_json::to_string_pretty(&card_value).unwrap());
+        // return card value
+        Ok(card_value.clone())
     } else {
-        println!("Card with code {} not found", code);
+        Err(format!("Card with code {} not found", code))
     }
 }
 
@@ -65,15 +63,15 @@ async fn fetch_cards() {
     };
 }
 
-#[derive(Component)]
-struct Card;
-#[derive(Component)]
-struct Code(String);
+// #[derive(Component)]
+// struct Card;
+// #[derive(Component)]
+// struct Code(String);
 
-fn create_card(mut commands: Commands) {
-    commands.spawn((Card, Code("01001".to_string())));
-    commands.spawn((Card, Code("01002".to_string())));
-}
+// fn create_card(mut commands: Commands) {
+//     commands.spawn((Card, Code("01001".to_string())));
+//     commands.spawn((Card, Code("01002".to_string())));
+// }
 
 pub struct InitGame;
 impl Plugin for InitGame {
@@ -90,4 +88,8 @@ fn load_config() {
 
     // Parse JSON
     let json_value: Value = serde_json::from_str(&contents).unwrap();
+
+    let test = get_card("01000", json_value).unwrap();
+
+    println!("{}", serde_json::to_string_pretty(&test).unwrap());
 }
