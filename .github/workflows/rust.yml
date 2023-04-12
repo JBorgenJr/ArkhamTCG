@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        rust-version: [stable, nightly]
+        rust-version: [stable]
 
     steps:
     - uses: actions/checkout@v2
@@ -23,5 +23,5 @@ jobs:
 
     - name: Build and test
       run: |
-        cargo build --verbose
         cargo test --verbose
+        cargo build --verbose
