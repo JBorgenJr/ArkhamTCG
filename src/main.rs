@@ -39,18 +39,19 @@ fn get_card(code: &str, json_value: Value) {
 
 async fn fetch_cards() {
     // Retrieve latest card list from ArkhamDB public API
-    let response = reqwest::get("https://arkhamdb.com/api/public/cards/?encounter=1")
-        .await
-        .unwrap();
+    let response: reqwest::Response =
+        reqwest::get("https://arkhamdb.com/api/public/cards/?encounter=1")
+            .await
+            .unwrap();
 
-    let status = response.status();
+    let status: reqwest::StatusCode = response.status();
 
     match status {
         reqwest::StatusCode::OK => {
-            let json_string = response.text().await.unwrap();
+            let json_string: String = response.text().await.unwrap();
 
             // Write JSON to file
-            let mut file = File::create("src/assets/cards.json").unwrap();
+            let mut file: File = File::create("src/assets/cards.json").unwrap();
             file.write_all(json_string.as_bytes()).unwrap();
         }
         reqwest::StatusCode::UNAUTHORIZED => {
@@ -80,9 +81,9 @@ impl Plugin for InitGame {
 }
 
 fn load_config() {
-    let mut file = File::open("src/assets/cards.json").unwrap();
+    let mut file: File = File::open("src/assets/cards.json").unwrap();
 
-    let mut contents = String::new();
+    let mut contents: String = String::new();
     file.read_to_string(&mut contents).unwrap();
 
     // Parse JSON
