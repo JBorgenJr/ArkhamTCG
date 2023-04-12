@@ -23,6 +23,8 @@ async fn main() {
 }
 
 fn get_card(code: &str, json_value: Value) {
+    // TODO Adjust this to have it return the card value
+
     // Search for card via card code
     if let Some(card_value) = json_value
         .as_array()
