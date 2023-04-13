@@ -36,6 +36,9 @@ fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
         Err(format!("Card with code {} not found", code))
     }
 }
+// Example call
+// let test = get_card("01000", json_value).unwrap();
+// println!("{}", serde_json::to_string_pretty(&test).unwrap());
 
 async fn fetch_cards() {
     // Retrieve latest card list from ArkhamDB public API
@@ -63,24 +66,18 @@ async fn fetch_cards() {
     };
 }
 
-// #[derive(Component)]
-// struct Card;
-// #[derive(Component)]
-// struct Code(String);
-
-// fn create_card(mut commands: Commands) {
-//     commands.spawn((Card, Code("01001".to_string())));
-//     commands.spawn((Card, Code("01002".to_string())));
-// }
-
 pub struct InitGame;
 impl Plugin for InitGame {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(load_config);
+        app.add_startup_system(setup);
     }
 }
 
-fn load_config() {
+fn setup(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<StandardMaterial>>,
+) {
     let mut file: File = File::open("src/assets/cards.json").unwrap();
 
     let mut contents: String = String::new();
@@ -89,7 +86,35 @@ fn load_config() {
     // Parse JSON
     let json_value: Value = serde_json::from_str(&contents).unwrap();
 
-    let test = get_card("01000", json_value).unwrap();
+    // Create plane
+    commands.spawn(PbrBundle {
+        mesh: meshes.add(shape::Plane::from_size(5.0).into()),
+        material: materials.add(Color::rgb(0.3, 0.5, 0.3).into()),
+        ..default()
+    });
 
-    println!("{}", serde_json::to_string_pretty(&test).unwrap());
+    // Card Deck
+    commands.spawn(PbrBundle {
+        mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
+        material: materials.add(Color::rgb(0.3, 0.7, 0.6).into()),
+        transform: Transform::from_xyz(0.0, 0.5, 0.0),
+        ..default()
+    });
+
+    // light
+    commands.spawn(PointLightBundle {
+        point_light: PointLight {
+            intensity: 1500.0,
+            shadows_enabled: true,
+            ..default()
+        },
+        transform: Transform::from_xyz(4.0, 8.0, 4.0),
+        ..default()
+    });
+
+    // camera
+    commands.spawn(Camera3dBundle {
+        transform: Transform::from_xyz(-2.0, 2.5, 5.0).looking_at(Vec3::ZERO, Vec3::Y),
+        ..default()
+    });
 }
