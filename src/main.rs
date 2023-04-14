@@ -4,7 +4,10 @@ use std::fs::File;
 use std::io::{Read, Write};
 
 // Bevy Doc
-// https://bevyengine.org/learn/book/getting-started/apps/
+// https://bevyengine.org/learn/book/getting-started
+
+const CARDPATH: &str = "src/assets/cards.json";
+
 #[tokio::main]
 async fn main() {
     println!("Game Started!");
@@ -22,31 +25,30 @@ async fn main() {
         .run();
 }
 
-fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
-    // Search for card via card code
-    if let Some(card_value) = json_value
-        .as_array()
-        .unwrap()
-        .iter()
-        .find(|card| card["code"] == code)
-    {
-        // return card value
-        Ok(card_value.clone())
-    } else {
-        Err(format!("Card with code {} not found", code))
-    }
-}
-// Example call
-// let test = get_card("01000", json_value).unwrap();
-// println!("{}", serde_json::to_string_pretty(&test).unwrap());
+// fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
+//     // Search for card via card code
+//     if let Some(card_value) = json_value
+//         .as_array()
+//         .unwrap()
+//         .iter()
+//         .find(|card| card["code"] == code)
+//     {
+//         // return card value
+//         Ok(card_value.clone())
+//     } else {
+//         Err(format!("Card with code {} not found", code))
+//     }
+
+//     // Example call
+//     // let test = get_card("01000", json_value).unwrap();
+//     // println!("{}", serde_json::to_string_pretty(&test).unwrap());
+// }
 
 async fn fetch_cards() {
-    // Retrieve latest card list from ArkhamDB public API
-    let response: reqwest::Response =
-        reqwest::get("https://arkhamdb.com/api/public/cards/?encounter=1")
-            .await
-            .unwrap();
+    const ALL_CARDS_URL: &str = "https://arkhamdb.com/api/public/cards/?encounter=1";
 
+    // Retrieve latest card list from ArkhamDB public API
+    let response: reqwest::Response = reqwest::get(ALL_CARDS_URL).await.unwrap();
     let status: reqwest::StatusCode = response.status();
 
     match status {
@@ -54,7 +56,7 @@ async fn fetch_cards() {
             let json_string: String = response.text().await.unwrap();
 
             // Write JSON to file
-            let mut file: File = File::create("src/assets/cards.json").unwrap();
+            let mut file: File = File::create(CARDPATH).unwrap();
             file.write_all(json_string.as_bytes()).unwrap();
         }
         reqwest::StatusCode::UNAUTHORIZED => {
@@ -78,7 +80,7 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let mut file: File = File::open("src/assets/cards.json").unwrap();
+    let mut file: File = File::open(CARDPATH).unwrap();
 
     let mut contents: String = String::new();
     file.read_to_string(&mut contents).unwrap();
