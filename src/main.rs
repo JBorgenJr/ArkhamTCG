@@ -1,7 +1,8 @@
 use bevy::prelude::*;
 use serde_json::Value;
+use std::collections::HashSet;
 use std::fs::File;
-// use std::io::Read;
+use std::io::Read;
 
 // Bevy Doc
 // https://bevyengine.org/learn/book/getting-started
@@ -18,10 +19,12 @@ async fn main() {
         fetch_cards().await;
     }
 
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_plugin(InitGame)
-        .run();
+    create_player_deck();
+
+    // App::new()
+    //     .add_plugins(DefaultPlugins)
+    //     .add_plugin(InitGame)
+    //     .run();
 }
 
 // fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
@@ -74,7 +77,7 @@ fn split_file(json_string: String) {
         .as_array()
         .unwrap()
         .iter()
-        .partition(|card| card["encounter_name"].is_string());
+        .partition(|card| card["encounter_code"].is_string());
 
     // Write encounter cards to file
     let mut enc_cards_file: File = File::create(ENCCARDS).unwrap();
@@ -83,6 +86,78 @@ fn split_file(json_string: String) {
     // Write player cards to file
     let mut player_cards_file: File = File::create(PLAYERCARDS).unwrap();
     serde_json::to_writer(&mut player_cards_file, &player_cards).unwrap();
+}
+
+fn _create_encounter_deck(encounter_code_value: &str) -> Vec<Value> {
+    // Read encounter card file
+    let mut encounter_file: File = File::open(ENCCARDS).unwrap();
+    let mut contents: String = String::new();
+    encounter_file.read_to_string(&mut contents).unwrap();
+
+    // Parse JSON
+    let encounter_json: Value = serde_json::from_str(&contents).unwrap();
+
+    // Search file for requested encounter
+    let encounter_deck: Vec<Value> = encounter_json
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|card| {
+            if let Some(encounter_code) = card.get("encounter_code") {
+                if let Some(name) = encounter_code.as_str() {
+                    return name == encounter_code_value;
+                }
+            }
+            false
+        })
+        .cloned()
+        .collect::<Vec<_>>();
+    return encounter_deck;
+}
+
+fn create_player_deck() {
+    // Read player card file
+    let mut player_card_file: File = File::open(PLAYERCARDS).unwrap();
+    let mut contents: String = String::new();
+    player_card_file.read_to_string(&mut contents).unwrap();
+
+    // Parse JSON
+    let player_cards_json: Value = serde_json::from_str(&contents).unwrap();
+
+    // Get all investigators
+    let investigators_cards: Vec<Value> = player_cards_json
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|card| card["type_code"] == "investigator")
+        .cloned()
+        .collect::<Vec<_>>();
+
+    // TODO: Find a way to handle investigators who had alternate versions (\"Skids\" O'Toole)
+    // Get all unique names
+    let mut names_set: HashSet<String> = HashSet::new();
+    for card in investigators_cards {
+        if let Some(name) = card.get("name") {
+            if let Some(name_str) = name.as_str() {
+                names_set.insert(String::from(name_str));
+            }
+        }
+    }
+
+    // Convert set to vector and sort
+    let mut investigator_names: Vec<String> = names_set.into_iter().collect();
+    investigator_names.sort();
+
+    // Select investigator
+    // Example: Roland Banks - Code 01001
+    // TODO: Look into a better way to select investigators. Could have a use select a name then get original and alternates via "duplicate_of_code": "01001"
+    let selected_investigator: &str = "01001";
+
+    // Enforce deck restrictions
+
+    // Reduce card catelog by restrictions
+
+    // Return player deck
 }
 
 // #[derive(Component)]
