@@ -7,22 +7,28 @@ use std::io::{Read, Write};
 // https://bevyengine.org/learn/book/getting-started
 
 const CARDPATH: &str = "src/assets/cards.json";
+const PLAYERCARDS: &str = "src/assets/player_cards.json";
+const ENCCARDS: &str = "src/assets/encounter_cards.json";
 
 #[tokio::main]
 async fn main() {
-    println!("Game Started!");
-
     let args: Vec<String> = std::env::args().collect();
 
-    // Check for update argument and trigger fetch of card list
-    if args.contains(&"-update".to_string()) {
-        fetch_cards().await;
-    }
+    if args.is_empty() {
+        App::new()
+            .add_plugins(DefaultPlugins)
+            .add_plugin(InitGame)
+            .run();
+    } else {
+        // Check for update argument and trigger fetch of card list
+        if args.contains(&"-update".to_string()) {
+            fetch_cards().await;
+        }
 
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_plugin(InitGame)
-        .run();
+        if args.contains(&"-split".to_string()) {
+            split_file();
+        }
+    }
 }
 
 // fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
@@ -58,6 +64,8 @@ async fn fetch_cards() {
             // Write JSON to file
             let mut file: File = File::create(CARDPATH).unwrap();
             file.write_all(json_string.as_bytes()).unwrap();
+
+            // split the json if the json has encounter-name?
         }
         reqwest::StatusCode::UNAUTHORIZED => {
             println!("Unable to fetch cards, unauthorized");
@@ -66,6 +74,32 @@ async fn fetch_cards() {
             panic!("Unable to fetch cards, something went wrong");
         }
     };
+}
+
+fn split_file() {
+    let mut file: File = File::open(CARDPATH).unwrap();
+
+    let mut contents: String = String::new();
+    file.read_to_string(&mut contents).unwrap();
+
+    // Parse JSON
+    let json_value: Value = serde_json::from_str(&contents).unwrap();
+
+    // Search for cards with encounter_name
+    let encounter_cards = json_value
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|card| card["encounter_name"].is_string())
+        .collect::<Vec<&Value>>();
+
+    // Write JSON to file
+    let mut file: File = File::create(ENCCARDS).unwrap();
+    // file.write_all(encounter_cards.as_bytes()).unwrap();
+
+    // Example call
+    // let test = get_card("01000", json_value).unwrap();
+    // println!("{}", serde_json::to_string_pretty(&test).unwrap());
 }
 
 // #[derive(Component)]
@@ -104,7 +138,7 @@ fn setup(
 
     // Card Deck
     commands.spawn(PbrBundle {
-        mesh: meshes.add(Mesh::from(shape::Box::new( 1.0, 0.5, 2.0))),
+        mesh: meshes.add(Mesh::from(shape::Box::new(1.0, 0.5, 2.0))),
         material: materials.add(Color::rgb(0.3, 0.7, 0.6).into()),
         transform: Transform::from_xyz(0.0, 0.5, 0.0),
         ..default()
