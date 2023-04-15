@@ -1,12 +1,11 @@
 use bevy::prelude::*;
 use serde_json::Value;
 use std::fs::File;
-use std::io::{Read, Write};
+// use std::io::Read;
 
 // Bevy Doc
 // https://bevyengine.org/learn/book/getting-started
 
-const CARDPATH: &str = "src/assets/cards.json";
 const PLAYERCARDS: &str = "src/assets/player_cards.json";
 const ENCCARDS: &str = "src/assets/encounter_cards.json";
 
@@ -14,21 +13,15 @@ const ENCCARDS: &str = "src/assets/encounter_cards.json";
 async fn main() {
     let args: Vec<String> = std::env::args().collect();
 
-    if args.is_empty() {
-        App::new()
-            .add_plugins(DefaultPlugins)
-            .add_plugin(InitGame)
-            .run();
-    } else {
-        // Check for update argument and trigger fetch of card list
-        if args.contains(&"-update".to_string()) {
-            fetch_cards().await;
-        }
-
-        if args.contains(&"-split".to_string()) {
-            split_file();
-        }
+    // Check for update argument and trigger fetch of card list
+    if args.contains(&"-update".to_string()) {
+        fetch_cards().await;
     }
+
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_plugin(InitGame)
+        .run();
 }
 
 // fn get_card(code: &str, json_value: Value) -> Result<Value, String> {
@@ -61,11 +54,7 @@ async fn fetch_cards() {
         reqwest::StatusCode::OK => {
             let json_string: String = response.text().await.unwrap();
 
-            // Write JSON to file
-            let mut file: File = File::create(CARDPATH).unwrap();
-            file.write_all(json_string.as_bytes()).unwrap();
-
-            // split the json if the json has encounter-name?
+            split_file(json_string);
         }
         reqwest::StatusCode::UNAUTHORIZED => {
             println!("Unable to fetch cards, unauthorized");
@@ -76,30 +65,24 @@ async fn fetch_cards() {
     };
 }
 
-fn split_file() {
-    let mut file: File = File::open(CARDPATH).unwrap();
+fn split_file(json_string: String) {
+    // Parse JSON from string
+    let json_value: Value = serde_json::from_str(&json_string).unwrap();
 
-    let mut contents: String = String::new();
-    file.read_to_string(&mut contents).unwrap();
-
-    // Parse JSON
-    let json_value: Value = serde_json::from_str(&contents).unwrap();
-
-    // Search for cards with encounter_name
-    let encounter_cards = json_value
+    // Partition the json of all cards into encounter cards, and player cards
+    let (encounter_cards, player_cards): (Vec<&Value>, Vec<&Value>) = json_value
         .as_array()
         .unwrap()
         .iter()
-        .filter(|card| card["encounter_name"].is_string())
-        .collect::<Vec<&Value>>();
+        .partition(|card| card["encounter_name"].is_string());
 
-    // Write JSON to file
-    let mut file: File = File::create(ENCCARDS).unwrap();
-    // file.write_all(encounter_cards.as_bytes()).unwrap();
+    // Write encounter cards to file
+    let mut enc_cards_file: File = File::create(ENCCARDS).unwrap();
+    serde_json::to_writer(&mut enc_cards_file, &encounter_cards).unwrap();
 
-    // Example call
-    // let test = get_card("01000", json_value).unwrap();
-    // println!("{}", serde_json::to_string_pretty(&test).unwrap());
+    // Write player cards to file
+    let mut player_cards_file: File = File::create(PLAYERCARDS).unwrap();
+    serde_json::to_writer(&mut player_cards_file, &player_cards).unwrap();
 }
 
 // #[derive(Component)]
@@ -121,14 +104,6 @@ fn setup(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    let mut file: File = File::open(CARDPATH).unwrap();
-
-    let mut contents: String = String::new();
-    file.read_to_string(&mut contents).unwrap();
-
-    // Parse JSON
-    let json_value: Value = serde_json::from_str(&contents).unwrap();
-
     // Create plane
     commands.spawn(PbrBundle {
         mesh: meshes.add(shape::Plane::from_size(5.0).into()),
