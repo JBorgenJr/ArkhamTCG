@@ -117,9 +117,9 @@ fn _create_encounter_deck(encounter_code_value: &str) -> Vec<Value> {
 
 fn create_player_deck() {
     // Read player card file
-    let mut player_card_file: File = File::open(PLAYERCARDS).unwrap();
+    let mut player_cards_file: File = File::open(PLAYERCARDS).unwrap();
     let mut contents: String = String::new();
-    player_card_file.read_to_string(&mut contents).unwrap();
+    player_cards_file.read_to_string(&mut contents).unwrap();
 
     // Parse JSON
     let player_cards_json: Value = serde_json::from_str(&contents).unwrap();
@@ -152,8 +152,16 @@ fn create_player_deck() {
     // Example: Roland Banks - Code 01001
     // TODO: Look into a better way to select investigators. Could have a use select a name then get original and alternates via "duplicate_of_code": "01001"
     let selected_investigator: &str = "01001";
+    // TODO: fix the find
+    // let investigator_card = investigators_cards
+    //     .iter()
+    //     .find(|card| card["code"] == selected_investigator)
+    //     .unwrap();
 
-    // Enforce deck restrictions
+    // Enfoce deck requirements and restrictions
+    let mut deck: Vec<Value>;
+    // Requirements
+    // Note: Some cards have options for their required cards, there will need to be a system that allows for selecting one as an option. For testing, the first will be selectd
 
     // Reduce card catelog by restrictions
 
