@@ -6,8 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-# remove dynamic linking feature before release
-bevy = { version = "0.10.0", features = ["dynamic_linking"] }
+reqwest = "0.11.4"
 tokio = { version = "1", features = ["full"] }
-reqwest = { version = "0.11.4", features = ["json"] }
-serde_json = "1.0.70"
+indicatif = "0.17.0"
