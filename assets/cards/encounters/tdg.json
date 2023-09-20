@@ -1,0 +1,79 @@
+[
+  {
+    "code": "98014",
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Stephen Somers",
+    "imagesrc": "/bundles/cards/98014.png",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Nautical Prowess",
+    "octgn_id": "8aa0affa-91ab-497d-97fb-1f1407e6a30b",
+    "pack_code": "tdg",
+    "pack_name": "The Deep Gate",
+    "permanent": false,
+    "position": 14,
+    "quantity": 1,
+    "real_name": "Nautical Prowess",
+    "real_slot": "",
+    "real_text": "Silas Marsh deck only. Replacement.\nIf a chaos token with a negative modifier is revealed during this test, either draw 1 card or Nautical Prowess gains [wild][wild].",
+    "real_traits": "Innate. Developed.",
+    "restrictions": {
+      "investigator": {
+        "07005": "07005",
+        "98013": "98013"
+      }
+    },
+    "skill_intellect": 1,
+    "skill_wild": 1,
+    "skill_willpower": 1,
+    "text": "Silas Marsh deck only. Replacement.\nIf a chaos token with a negative modifier is revealed during this test, either draw 1 card or Nautical Prowess gains [wild][wild].",
+    "traits": "Innate. Developed.",
+    "type_code": "skill",
+    "type_name": "Skill",
+    "url": "https://arkhamdb.com/card/98014"
+  },
+  {
+    "code": "98015",
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Mariusz Gandzel",
+    "imagesrc": "/bundles/cards/98015.png",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Dreams of the Deep",
+    "octgn_id": "32cc7955-1b67-4ab4-9c5b-b2ffa80257e0",
+    "pack_code": "tdg",
+    "pack_name": "The Deep Gate",
+    "permanent": false,
+    "position": 15,
+    "quantity": 1,
+    "real_name": "Dreams of the Deep",
+    "real_slot": "",
+    "real_text": "Silas Marsh deck only. Replacement.\nThis skill's icons subtract from your skill value instead of adding to it.\nIf this skill test fails, return this skill to your hand.\n<b>Forced</b> - If Dreams of the Deep is in your hand at the end of your turn: Reveal it and take 2 damage.",
+    "real_traits": "Curse.",
+    "restrictions": {
+      "investigator": {
+        "07005": "07005",
+        "98013": "98013"
+      }
+    },
+    "skill_wild": 2,
+    "subname": "The Deep Gate",
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "Silas Marsh deck only. Replacement.\nThis skill's icons subtract from your skill value instead of adding to it.\nIf this skill test fails, return this skill to your hand.\n<b>Forced</b> - If Dreams of the Deep is in your hand at the end of your turn: Reveal it and take 2 damage.",
+    "traits": "Curse.",
+    "type_code": "skill",
+    "type_name": "Skill",
+    "url": "https://arkhamdb.com/card/98015"
+  }
+]

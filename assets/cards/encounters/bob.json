@@ -1,0 +1,87 @@
+[
+  {
+    "code": "98017",
+    "cost": 3,
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health": 2,
+    "health_per_investigator": false,
+    "illustrator": "Drazenka Kimpel",
+    "imagesrc": "/bundles/cards/98017.png",
+    "is_unique": true,
+    "myriad": false,
+    "name": "Molly Maxwell",
+    "octgn_id": "c71da431-85ee-4a76-b041-ae1b73b0de56",
+    "pack_code": "bob",
+    "pack_name": "Blood of Baalshandor",
+    "permanent": false,
+    "position": 17,
+    "quantity": 1,
+    "real_name": "Molly Maxwell",
+    "real_slot": "Ally",
+    "real_text": "Dexter Drake deck only. Replacement.\n[free] Exhaust Molly Maxwell and deal her 1 horror: Name any trait. One at a time, reveal cards from the top of your deck until an asset with the named trait is revealed. Draw that asset. Shuffle each other revealed card back into your deck.",
+    "real_traits": "Ally. Assistant.",
+    "restrictions": {
+      "investigator": {
+        "07004": "07004",
+        "98016": "98016"
+      }
+    },
+    "sanity": 4,
+    "skill_agility": 1,
+    "skill_wild": 1,
+    "skill_willpower": 1,
+    "slot": "Ally",
+    "subname": "The Exotic Morgana",
+    "text": "Dexter Drake deck only. Replacement.\n[free] Exhaust Molly Maxwell and deal her 1 horror: Name any trait. One at a time, reveal cards from the top of your deck until an asset with the named trait is revealed. Draw that asset. Shuffle each other revealed card back into your deck.",
+    "traits": "Ally. Assistant.",
+    "type_code": "asset",
+    "type_name": "Asset",
+    "url": "https://arkhamdb.com/card/98017"
+  },
+  {
+    "code": "98018",
+    "deck_limit": 1,
+    "double_sided": false,
+    "errata_date": {
+      "date": "2021-06-28 00:00:00.000000",
+      "timezone": "UTC",
+      "timezone_type": 3
+    },
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Adam S. Doyle",
+    "imagesrc": "/bundles/cards/98018.png",
+    "is_unique": true,
+    "myriad": false,
+    "name": "Yaztaroth",
+    "octgn_id": "04883b22-3c62-4b06-845f-d592237c9ead",
+    "pack_code": "bob",
+    "pack_name": "Blood of Baalshandor",
+    "permanent": false,
+    "position": 18,
+    "quantity": 1,
+    "real_name": "Yaztaroth",
+    "real_slot": "",
+    "real_text": "Dexter Drake deck only. Replacement.\n<b>Revelation</b> - Put Yaztaroth into play in your threat area.\nYou cannot play assets or put assests into play.\n[action] [action]: Discard Yaztaroth.",
+    "real_traits": "Curse. Pact.",
+    "restrictions": {
+      "investigator": {
+        "07004": "07004",
+        "98016": "98016"
+      }
+    },
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "Dexter Drake deck only. Replacement.\n<b>Revelation</b> - Put Yaztaroth into play in your threat area.\nYou cannot play assets or put assests into play.\n[action] [action]: Discard Yaztaroth.",
+    "traits": "Curse. Pact.",
+    "type_code": "treachery",
+    "type_name": "Treachery",
+    "url": "https://arkhamdb.com/card/98018"
+  }
+]

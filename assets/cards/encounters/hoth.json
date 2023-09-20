@@ -1,0 +1,82 @@
+[
+  {
+    "code": "98002",
+    "cost": 1,
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "David Griffith",
+    "imagesrc": "/bundles/cards/98002.png",
+    "is_unique": true,
+    "myriad": false,
+    "name": "Green Man Medallion",
+    "octgn_id": "a45917d1-d156-41cc-85bd-63ce323b8583",
+    "pack_code": "hoth",
+    "pack_name": "Hour of the Huntress",
+    "permanent": false,
+    "position": 2,
+    "quantity": 1,
+    "real_name": "Green Man Medallion",
+    "real_slot": "Accessory",
+    "real_text": "Jenny Barnes deck only. Replacement.\n[free] Spend up to 3 resources and exhaust Green Man Medallion: Place those resources on it, as offerings.\n[reaction] When you resign or the game ends: For every 6 offerings on Green Man Medallion, reduce the experience cost of the next card you purchase before the next scenario by 1.",
+    "real_traits": "Item. Relic.",
+    "restrictions": {
+      "investigator": {
+        "02003": "02003"
+      }
+    },
+    "skill_wild": 2,
+    "slot": "Accessory",
+    "subname": "Hour of the Huntress",
+    "text": "Jenny Barnes deck only. Replacement.\n[free] Spend up to 3 resources and exhaust Green Man Medallion: Place those resources on it, as offerings.\n[reaction] When you resign or the game ends: For every 6 offerings on Green Man Medallion, reduce the experience cost of the next card you purchase before the next scenario by 1.",
+    "traits": "Item. Relic.",
+    "type_code": "asset",
+    "type_name": "Asset",
+    "url": "https://arkhamdb.com/card/98002"
+  },
+  {
+    "code": "98003",
+    "deck_limit": 1,
+    "double_sided": false,
+    "enemy_damage": 1,
+    "enemy_evade": 2,
+    "enemy_fight": 4,
+    "enemy_horror": 1,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "flavor": "Thick limbs like wet branches yearned skyward, high above the platform. They swayed, whether in agony or exaltation Jenny could not tell. - Dave Gross, Hour of the Huntress",
+    "health": 3,
+    "health_per_investigator": false,
+    "illustrator": "Tiffany Turrill",
+    "imagesrc": "/bundles/cards/98003.png",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Sacrificial Beast",
+    "octgn_id": "c64de070-35b1-43b5-ab07-439b37fd0fd9",
+    "pack_code": "hoth",
+    "pack_name": "Hour of the Huntress",
+    "permanent": false,
+    "position": 3,
+    "quantity": 1,
+    "real_name": "Sacrificial Beast",
+    "real_slot": "",
+    "real_text": "Jenny Barnes deck only. Replacement.\n<b>Spawn</b> - Location farthest from you.\nJenny Barnes cannot gain resources via card effects.",
+    "real_traits": "Monster. Dark Young.",
+    "restrictions": {
+      "investigator": {
+        "02003": "02003"
+      }
+    },
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "Jenny Barnes deck only. Replacement.\n<b>Spawn</b> - Location farthest from you.\nJenny Barnes cannot gain resources via card effects.",
+    "traits": "Monster. Dark Young.",
+    "type_code": "enemy",
+    "type_name": "Enemy",
+    "url": "https://arkhamdb.com/card/98003"
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "code": "99002",
+    "cost": 3,
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Jeff Lee Johnson",
+    "imagesrc": "/bundles/cards/99002.png",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Mystifying Song",
+    "octgn_id": "13beb81c-4951-4891-9cb2-32d7c9c368bf",
+    "pack_code": "promo",
+    "pack_name": "Promo",
+    "permanent": false,
+    "position": 2,
+    "quantity": 1,
+    "real_name": "Mystifying Song",
+    "real_slot": "",
+    "real_text": "Marie Lambeau deck only.\nFast. Play when the agenda would advance by reaching its doom threshold.\nUntil the end of the phase, the agenda cannot advance by reaching its doom threshold. Remove Mystifying Song from the game.",
+    "real_traits": "Spell. Song.",
+    "restrictions": {
+      "investigator": {
+        "99001": "99001"
+      }
+    },
+    "skill_wild": 2,
+    "text": "Marie Lambeau deck only.\nFast. Play when the agenda would advance by reaching its doom threshold.\nUntil the end of the phase, the agenda cannot advance by reaching its doom threshold. Remove Mystifying Song from the game.",
+    "traits": "Spell. Song.",
+    "type_code": "event",
+    "type_name": "Event",
+    "url": "https://arkhamdb.com/card/99002"
+  },
+  {
+    "code": "99003",
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Magali Villeneuve",
+    "imagesrc": "/bundles/cards/99003.png",
+    "is_unique": true,
+    "myriad": false,
+    "name": "Baron Samedi",
+    "octgn_id": "80aa551e-34a6-412c-8520-7f55a0526bdc",
+    "pack_code": "promo",
+    "pack_name": "Promo",
+    "permanent": false,
+    "position": 3,
+    "quantity": 1,
+    "real_name": "Baron Samedi",
+    "real_slot": "Ally",
+    "real_text": "<b>Revelation</b> - Put Baron Samedi into play. He cannot leave play while he has less than 3 doom on him.\n<b>Forced</b> - When any amount of damage is placed on an investigator in Baron Samedi's location: Place 1 additional damage on that investigator.\n[free] Exhaust Baron Samedi: Place 1 doom on Baron Samedi. If he has 3 or more doom on him, discard him.",
+    "real_traits": "Avatar.",
+    "restrictions": {
+      "investigator": {
+        "99001": "99001"
+      }
+    },
+    "slot": "Ally",
+    "subname": "Lord of the Cemetery",
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "<b>Revelation</b> - Put Baron Samedi into play. He cannot leave play while he has less than 3 doom on him.\n<b>Forced</b> - When any amount of damage is placed on an investigator in Baron Samedi's location: Place 1 additional damage on that investigator.\n[free] Exhaust Baron Samedi: Place 1 doom on Baron Samedi. If he has 3 or more doom on him, discard him.",
+    "traits": "Avatar.",
+    "type_code": "asset",
+    "type_name": "Asset",
+    "url": "https://arkhamdb.com/card/99003"
+  }
+]

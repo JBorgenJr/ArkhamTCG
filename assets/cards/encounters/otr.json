@@ -1,0 +1,70 @@
+[
+  {
+    "code": "90047",
+    "cost": 2,
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Jake Murray",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Pete's Guitar",
+    "octgn_id": "4de97427-3808-48e0-8ca6-f662d9bca88b",
+    "pack_code": "otr",
+    "pack_name": "On the Road Again",
+    "permanent": false,
+    "position": 47,
+    "quantity": 1,
+    "real_name": "Pete's Guitar",
+    "real_text": "\"Ashcan\" Pete deck only. Replacement.\n[fast] Exhaust Pete's Guitar: Choose a non-[[Elite]] enemy at your location or a connecting location. Move that enemy once in a direction of your choice. Then, if there are no enemies at your location, either heal 1 horror or gane 1 resource.",
+    "real_traits": "Item. Instrument.",
+    "restrictions": {
+      "investigator": {
+        "02005": "02005"
+      }
+    },
+    "subname": "Still Holdin' Up",
+    "text": "\"Ashcan\" Pete deck only. Replacement.\n[fast] Exhaust Pete's Guitar: Choose a non-[[Elite]] enemy at your location or a connecting location. Move that enemy once in a direction of your choice. Then, if there are no enemies at your location, either heal 1 horror or gane 1 resource.",
+    "traits": "Item. Instrument.",
+    "type_code": "asset",
+    "type_name": "Asset",
+    "url": "https://arkhamdb.com/card/90047"
+  },
+  {
+    "code": "90048",
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Antonio Maínez",
+    "is_unique": false,
+    "myriad": false,
+    "name": "Hard Times",
+    "octgn_id": "a906e205-7daa-467e-bae6-c5d89a7274d0",
+    "pack_code": "otr",
+    "pack_name": "On the Road Again",
+    "permanent": false,
+    "position": 48,
+    "quantity": 1,
+    "real_name": "Hard Times",
+    "real_text": "\"Ashcan\" Pete deck only. Replacement.\n<b>Revelation</b> - Put Hard Times into play in your threat area.\n<b>Forced</b> - After you draw 1 or more cards: Choose and discard that many cards from hand.\n[action][action]: Discard Hard Times.",
+    "real_traits": "Hardship.",
+    "restrictions": {
+      "investigator": {
+        "02005": "02005"
+      }
+    },
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "\"Ashcan\" Pete deck only. Replacement.\n<b>Revelation</b> - Put Hard Times into play in your threat area.\n<b>Forced</b> - After you draw 1 or more cards: Choose and discard that many cards from hand.\n[action][action]: Discard Hard Times.",
+    "traits": "Hardship.",
+    "type_code": "treachery",
+    "type_name": "Treachery",
+    "url": "https://arkhamdb.com/card/90048"
+  }
+]

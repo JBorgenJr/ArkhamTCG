@@ -1,0 +1,81 @@
+[
+  {
+    "code": "98011",
+    "cost": 4,
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "flavor": "\"Will we need to save you again?\" Foolishness flicked his tail back and forth. \"Perhaps. Perhaps I'll do the saving.\"",
+    "health": 1,
+    "health_per_investigator": false,
+    "illustrator": "Tiffany Turrill",
+    "imagesrc": "/bundles/cards/98011.png",
+    "is_unique": true,
+    "myriad": false,
+    "name": "Foolishness",
+    "octgn_id": "b5e46c95-6a0f-4409-a0b7-4f4b02dc754f",
+    "pack_code": "tftbw",
+    "pack_name": "To Fight the Black Wind",
+    "permanent": false,
+    "position": 11,
+    "quantity": 1,
+    "real_name": "Foolishness",
+    "real_slot": "Ally",
+    "real_text": "Carolyn Fern deck only. Replacement.\nFoolishness enters play with 3 horror on him. Horror on him may be healed as if it were on Carolyn Fern. While Foolishness has no horror on him, you get +1 to all skills.",
+    "real_traits": "Ally. Creature. Dreamlands.",
+    "restrictions": {
+      "investigator": {
+        "05001": "05001",
+        "98010": "98010"
+      }
+    },
+    "sanity": 4,
+    "skill_wild": 2,
+    "slot": "Ally",
+    "subname": "Foolish Cat of Ulthar",
+    "text": "Carolyn Fern deck only. Replacement.\nFoolishness enters play with 3 horror on him. Horror on him may be healed as if it were on Carolyn Fern. While Foolishness has no horror on him, you get +1 to all skills.",
+    "traits": "Ally. Creature. Dreamlands.",
+    "type_code": "asset",
+    "type_name": "Asset",
+    "url": "https://arkhamdb.com/card/98011"
+  },
+  {
+    "code": "98012",
+    "deck_limit": 1,
+    "double_sided": false,
+    "exceptional": false,
+    "faction_code": "neutral",
+    "faction_name": "Neutral",
+    "health_per_investigator": false,
+    "illustrator": "Tiffany Turrill",
+    "imagesrc": "/bundles/cards/98012.png",
+    "is_unique": false,
+    "myriad": false,
+    "name": "To Fight the Black Wind",
+    "octgn_id": "90bae4d6-e012-4a80-9a98-8d85211efb13",
+    "pack_code": "tftbw",
+    "pack_name": "To Fight the Black Wind",
+    "permanent": false,
+    "position": 12,
+    "quantity": 1,
+    "real_name": "To Fight the Black Wind",
+    "real_slot": "",
+    "real_text": "Carolyn Fern deck only. Replacement.\n<b>Revelation</b> - Attach To Fight the Black Wind to the current agenda. Carolyn Fern takes 1 direct horror.\n<b>Forced</b> - At the end of the round, if any amount of horror was assigned to an investigator this round and it was not healed: Place 1 doom on attached agenda.",
+    "real_traits": "Task. Dreamlands.",
+    "restrictions": {
+      "investigator": {
+        "05001": "05001",
+        "98010": "98010"
+      }
+    },
+    "subtype_code": "weakness",
+    "subtype_name": "Weakness",
+    "text": "Carolyn Fern deck only. Replacement.\n<b>Revelation</b> - Attach To Fight the Black Wind to the current agenda. Carolyn Fern takes 1 direct horror.\n<b>Forced</b> - At the end of the round, if any amount of horror was assigned to an investigator this round and it was not healed: Place 1 doom on attached agenda.",
+    "traits": "Task. Dreamlands.",
+    "type_code": "treachery",
+    "type_name": "Treachery",
+    "url": "https://arkhamdb.com/card/98012"
+  }
+]
