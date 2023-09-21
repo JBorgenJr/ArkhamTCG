@@ -1,8 +1,6 @@
 name: Rust CI
 
 on:
-    push:
-        branches: [main]
     pull_request:
         branches: [main]
 
@@ -23,8 +21,4 @@ jobs:
 
             - name: Test rust code
               run: cargo test
-              working-directory: ./arkham_tcg_rust
-
-            - name: Build rust crate
-              run: cargo build
               working-directory: ./arkham_tcg_rust
