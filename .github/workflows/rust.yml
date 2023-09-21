@@ -1,27 +1,28 @@
 name: Rust CI
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 jobs:
-  build:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        rust-version: [stable]
+    build:
+        runs-on: macos-latest
+        strategy:
+            matrix:
+                rust-version: [stable]
 
-    steps:
-    - uses: actions/checkout@v2
+        steps:
+            - uses: actions/checkout@v2
 
-    - name: Set up Rust ${{ matrix.rust-version }}
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: ${{ matrix.rust-version }}
+            - name: Set up Rust ${{ matrix.rust-version }}
+              uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: ${{ matrix.rust-version }}
 
-    - name: Build and test
-      run: |
-        cargo test --verbose
-        cargo build --verbose
+            - name: Build and test
+              run: |
+                  cargo test --verbose
+                  cargo build --verbose
+              working-directory: ./arkham_tcg_rust
