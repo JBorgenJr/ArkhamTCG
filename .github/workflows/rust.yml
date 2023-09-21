@@ -21,8 +21,10 @@ jobs:
               with:
                   toolchain: ${{ matrix.rust-version }}
 
-            - name: Build and test
-              run: |
-                  cargo test --verbose
-                  cargo build --verbose
+            - name: Test rust code
+              run: cargo test
+              working-directory: ./arkham_tcg_rust
+
+            - name: Build rust crate
+              run: cargo build
               working-directory: ./arkham_tcg_rust
