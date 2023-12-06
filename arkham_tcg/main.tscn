@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://cv5gddbyretg7"]
+[gd_scene load_steps=2 format=3 uid="uid://cv5gddbyretg7"]
+
+[ext_resource type="Theme" uid="uid://cgch8a2fp570e" path="res://Button.tres" id="1_1s0em"]
 
 [node name="main" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 288.0
+theme = ExtResource("1_1s0em")
